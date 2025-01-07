@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 上方控制栏 -->
+        <div class="quest-panel">
+            <div class="quest-header">
+                <i class="fas fa-compass"></i>
+                <h1>几何游戏</h1>
+                <div class="level">Level 1</div>
+            </div>
+            <div class="quest-list">
+                <div class="quest-item active" data-level="1">
+                    <div class="quest-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <div class="quest-content">
+                        <h3>边</h3>
+                    </div>
+                </div>
+                <div class="quest-item" data-level="2">
+                    <div class="quest-icon">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <div class="quest-content">
+                        <h3>面积</h3>
+                    </div>
+                </div>
+                <div class="quest-item" data-level="3">
+                    <div class="quest-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <div class="quest-content">
+                        <h3>周长</h3>
+                    </div>
+                </div>
+                <div class="quest-item" data-level="4">
+                    <div class="quest-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="quest-content">
+                        <h3>角度</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 下方画布区域 -->
+        <div class="game-content">
+            <div class="level-info">
+                <div class="task-info" data-level="1">
+                    <div class="task-header">
+                        <div class="current-task"></div>
+                        <div class="task-hint">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="hint-text">任务提示</span>
+                            <div class="hint-content">
+                                <h4>任务一：描边大师</h4>
+                                <p>点击网格，构造不同的图形，数一数每个图形由几条边围成</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="task-info" data-level="2" style="display: none;">
+                    <div class="task-header">
+                        <div class="current-task"></div>
+                        <div class="task-hint">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="hint-text">任务提示</span>
+                            <div class="hint-content">
+                                <h4>任务二：面积探索</h4>
+                                <p>点击网格，构造不同的图形，比较不同图形的面积大小</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="task-info" data-level="3" style="display: none;">
+                    <div class="task-header">
+                        <div class="current-task"></div>
+                        <div class="task-hint">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="hint-text">任务提示</span>
+                            <div class="hint-content">
+                                <h4>任务三：周长挑战</h4>
+                                <p>观察图形的周长与面积的关系：相同周长，面积是否相等？相同面积，周长是否相等？</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="task-info" data-level="4" style="display: none;">
+                    <div class="task-header">
+                        <div class="current-task"></div>
+                        <div class="task-hint">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="hint-text">任务提示</span>
+                            <div class="hint-content">
+                                <h4>任务四：角度魔法</h4>
+                                <p>在周长相同的情况下，观察角度变化对面积的影响</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-container">
+                <!-- Left Grid -->
+                <div class="grid-section-wrapper">
+                    <div class="grid-section">
+                        <div class="grid" id="leftGrid"></div>
+                        <div class="stats-box">
+                            <div class="stats">
+                                <div>面积: <span class="area-value">0</span></div>
+                                <div>周长: <span class="perimeter-value">0</span></div>
+                                <div class="block-base">
+                                    <i class="fas fa-eraser"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Grid -->
+                <div class="grid-section-wrapper">
+                    <div class="grid-section">
+                        <div class="grid" id="rightGrid"></div>
+                        <div class="stats-box">
+                            <div class="stats">
+                                <div>面积: <span class="area-value">0</span></div>
+                                <div>周长: <span class="perimeter-value">0</span></div>
+                                <div class="block-base">
+                                    <i class="fas fa-eraser"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="quest-tips">
+                <div class="operation-hint">
+                    <i class="fas fa-lightbulb"></i>
+                    <span class="hint-text">操作提示</span>
+                    <div class="hint-content operation-content">
+                        <ul>
+                            <li><i class="fas fa-mouse-pointer"></i> 点击小三角形可以填充或清除图形</li>
+                            <li><i class="fas fa-hand-pointer"></i> 按住鼠标拖动连续填充</li>
+                            <li><i class="fas fa-eraser"></i> 使用橡皮擦可以清除整个图形</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+

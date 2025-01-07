@@ -1,0 +1,459 @@
+body {
+    margin: 0;
+    padding: env(safe-area-inset-top) 20px 20px 20px;
+    background: #000000;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    color: #333;
+    padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+    padding-top: env(safe-area-inset-top); /* iOS 11.2+ */
+}
+
+.game-container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    min-height: calc(100vh - 80px);
+}
+
+.quest-panel {
+    background: #000000;
+    border-radius: 20px 20px 0 0;
+    padding: 20px 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.quest-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.quest-header i {
+    font-size: 32px;
+    color: #4CAF50;
+}
+
+.quest-header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #ffffff;
+    flex: 1;
+}
+
+.level {
+    background: #4CAF50;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.quest-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.quest-item {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    flex: 1;
+    min-width: 0;
+}
+
+.quest-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: #2a2a2a;
+}
+
+.quest-item.active {
+    background: #2d3b2e;
+    border-color: #4CAF50;
+}
+
+.quest-icon {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.quest-icon i {
+    font-size: 12px;
+    color: #4CAF50;
+}
+
+.quest-content {
+    flex: 1;
+}
+
+.quest-content h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.quest-content p {
+    margin: 0;
+    color: #999;
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.quest-progress {
+    max-width: 600px;
+    margin: 15px auto 0;
+    padding: 0 20px;
+}
+
+.progress-text {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.progress-bar-container {
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+.game-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 30px 30px 30px;
+}
+
+.level-info {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.current-task {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.task-description {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.grid-section-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.grid-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid {
+    border: 2px solid #333;
+    display: grid;
+    grid-template-columns: repeat(8, 30px);
+    grid-template-rows: repeat(8, 30px);
+    gap: 1px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stats-box {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 5px 15px;
+    margin-top: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 30px);
+    max-width: 300px;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.stats > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.block-base {
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: auto;
+}
+
+.block-base:hover {
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.block-base:active {
+    transform: scale(0.95);
+}
+
+.block-base i {
+    font-size: 16px;
+    color: #666;
+}
+
+.quest-tips {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.operation-hint {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    background: #1a1a1a;
+    padding: 10px 15px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+}
+
+.operation-hint:hover {
+    background: #2a2a2a;
+}
+
+.operation-hint i {
+    color: #FFC107;
+    font-size: 20px;
+}
+
+.operation-content {
+    width: 350px;
+    display: none;
+}
+
+.operation-content.show {
+    display: block;
+}
+
+.operation-content ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.operation-content li {
+    color: #666;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.operation-content li i {
+    color: #4CAF50;
+    font-size: 16px;
+}
+
+.grid-cell {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.grid-cell::after {
+    content: '';
+    position: absolute;
+    width: 141.4%;  /* √2 * 100% */
+    height: 1px;
+    background-color: #ccc;
+    top: 50%;
+    left: -20.7%;
+    transform-origin: center;
+    transform: rotate(45deg);
+}
+
+.grid-cell::before {
+    content: '';
+    position: absolute;
+    width: 141.4%;  /* √2 * 100% */
+    height: 1px;
+    background-color: #ccc;
+    top: 50%;
+    left: -20.7%;
+    transform-origin: center;
+    transform: rotate(-45deg);
+}
+
+.triangle-top, .triangle-right, .triangle-bottom, .triangle-left {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.triangle-top {
+    clip-path: polygon(0 0, 100% 0, 50% 50%);
+}
+
+.triangle-right {
+    clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+}
+
+.triangle-bottom {
+    clip-path: polygon(0 100%, 100% 100%, 50% 50%);
+}
+
+.triangle-left {
+    clip-path: polygon(0 0, 0 100%, 50% 50%);
+}
+
+.triangle-top:hover, .triangle-right:hover, .triangle-bottom:hover, .triangle-left:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.triangle-top.filled, .triangle-right.filled, .triangle-bottom.filled, .triangle-left.filled {
+    background-color: inherit;
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.task-hint {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.task-hint i {
+    color: #4CAF50;
+    font-size: 20px;
+}
+
+.hint-text {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.hint-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    z-index: 100;
+    margin-top: 10px;
+}
+
+.hint-content::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+}
+
+.task-hint:hover .hint-content {
+    display: block;
+}
+
+.hint-content h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.hint-content p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.current-task {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
