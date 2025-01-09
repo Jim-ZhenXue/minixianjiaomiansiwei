@@ -282,15 +282,15 @@ body {
 
 .operation-content {
     position: absolute;
-    width: 350px;
+    width: 280px;
     display: none;
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 5px;
     z-index: 1000;
     top: -120px;
-    right: 0;
+    right: -60px;
 }
 
 .operation-content::after {
@@ -326,13 +326,19 @@ body {
     font-size: 14px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    text-align: left;
+    gap: 8px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.operation-content li:last-child {
+    margin-bottom: 0;
 }
 
 .operation-content li i {
     color: #4CAF50;
     font-size: 16px;
+    flex-shrink: 0;
 }
 
 .grid-cell {
