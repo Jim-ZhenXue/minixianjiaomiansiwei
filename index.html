@@ -141,6 +141,23 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hintButton = document.querySelector('.task-hint');
+            
+            hintButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('active');
+            });
+
+            // 点击其他地方关闭提示
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.task-hint')) {
+                    hintButton.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 

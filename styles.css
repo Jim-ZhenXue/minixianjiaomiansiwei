@@ -431,19 +431,24 @@ body {
 }
 
 .task-hint {
-    position: relative;
-    display: flex;
-    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
     cursor: pointer;
-    margin-right: 40px;
-    width: 24px;
-    height: 24px;
-    justify-content: center;
+    font-size: 24px;
+    color: #4CAF50;
 }
 
 .task-hint i {
-    color: #4CAF50;
-    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.task-hint:hover i,
+.task-hint:active i,
+.task-hint.active i {
+    color: #45a049;
 }
 
 .hint-text {
@@ -451,32 +456,22 @@ body {
 }
 
 .hint-content {
-    display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%);
     background: white;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    display: none;
     z-index: 100;
-    margin-top: 10px;
 }
 
-.hint-content::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid white;
-}
-
-.task-hint:hover .hint-content {
+.task-hint:hover .hint-content,
+.task-hint:active .hint-content,
+.task-hint.active .hint-content {
     display: block;
 }
 
