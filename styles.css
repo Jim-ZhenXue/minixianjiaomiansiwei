@@ -44,6 +44,7 @@ body {
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .quest-header i {
@@ -493,5 +494,36 @@ body {
     font-weight: bold;
     color: #ffffff;
     margin-bottom: 10px;
+}
+
+.back-button {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #333;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.back-button:hover {
+    background: #444;
+    transform: scale(1.1);
+}
+
+.back-button:active {
+    transform: scale(0.95);
+}
+
+.back-button i {
+    font-size: 18px;
 }
 
