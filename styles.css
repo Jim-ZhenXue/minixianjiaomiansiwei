@@ -42,6 +42,69 @@ body {
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.quest-header:hover .operation-content,
+.quest-header:active .operation-content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quest-header .operation-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+.quest-header .operation-content::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 20px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    transform: rotate(45deg);
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.quest-header .operation-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.quest-header .operation-content li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    color: #333;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.quest-header .operation-content li:last-child {
+    border-bottom: none;
+}
+
+.quest-header .operation-content li i {
+    color: #4CAF50;
+    font-size: 16px;
 }
 
 .quest-header i {
