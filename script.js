@@ -334,4 +334,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // 返回按钮功能
+    const backButton = document.querySelector('.back-button');
+    if (backButton) {
+        backButton.addEventListener('click', function() {
+            window.history.back();
+        });
+    }
 });

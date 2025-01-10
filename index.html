@@ -13,6 +13,10 @@
     <div class="game-container">
         <!-- 上方控制栏 -->
         <div class="quest-panel">
+            <button class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                返回
+            </button>
             <div class="quest-header">
                 <i class="fas fa-compass"></i>
                 <h1>建造师</h1>
@@ -143,7 +147,6 @@
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 问号按钮的点击处理
             const hintButton = document.querySelector('.task-hint');
             
             hintButton.addEventListener('click', function(e) {
@@ -151,33 +154,12 @@
                 this.classList.toggle('active');
             });
 
+            // 点击其他地方关闭提示
             document.addEventListener('click', function(e) {
                 if (!e.target.closest('.task-hint')) {
                     hintButton.classList.remove('active');
                 }
             });
-
-            // 滑动返回功能
-            let touchStartX = 0;
-            let touchEndX = 0;
-            const minSwipeDistance = 100; // 最小滑动距离
-
-            document.addEventListener('touchstart', function(e) {
-                touchStartX = e.touches[0].clientX;
-            }, false);
-
-            document.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].clientX;
-                handleSwipe();
-            }, false);
-
-            function handleSwipe() {
-                const swipeDistance = touchEndX - touchStartX;
-                if (swipeDistance > minSwipeDistance) {
-                    // 向右滑动超过最小距离，触发返回
-                    window.history.back();
-                }
-            }
         });
     </script>
 </body>

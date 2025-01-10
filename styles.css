@@ -495,3 +495,27 @@ body {
     margin-bottom: 10px;
 }
 
+.back-button {
+    background: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.back-button:hover {
+    background: #2a2a2a;
+    transform: translateX(-2px);
+}
+
+.back-button i {
+    font-size: 12px;
+}
+
