@@ -68,7 +68,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .quest-item {
@@ -169,10 +170,8 @@ body {
 }
 
 .quest-tips {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    z-index: 100;
+    position: static;
+    padding-left: 10px;
 }
 
 .level-info {
@@ -301,19 +300,21 @@ body {
     padding: 10px 15px;
     border-radius: 5px;
     z-index: 1000;
-    bottom: 100%;
-    left: 0;
-    margin-bottom: 10px;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10px;
 }
 
 .operation-content::after {
     content: '';
     position: absolute;
-    bottom: -16px;
-    left: 20px;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
     border-width: 8px;
     border-style: solid;
-    border-color: #333 transparent transparent transparent;
+    border-color: transparent #333 transparent transparent;
 }
 
 .operation-hint:hover .operation-content {
