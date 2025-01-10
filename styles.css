@@ -496,20 +496,28 @@ body {
 }
 
 .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
     cursor: pointer;
-    padding: 10px;
-    margin-right: 10px;
-    color: #333;
-    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .back-button:hover {
-    color: #666;
+    background: #45a049;
+    transform: translateY(-2px);
 }
 
-.quest-header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
+.back-button i {
+    font-size: 12px;
 }
 

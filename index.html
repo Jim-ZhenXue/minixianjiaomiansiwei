@@ -8,15 +8,17 @@
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 </head>
 <body>
     <div class="game-container">
+        <!-- 返回按钮 -->
+        <div class="back-button" onclick="wx.miniProgram.navigateBack()">
+            <i class="fas fa-arrow-left"></i> 返回
+        </div>
         <!-- 上方控制栏 -->
         <div class="quest-panel">
             <div class="quest-header">
-                <div class="back-button" onclick="wx.navigateTo({url: '/pages/index/index'})">
-                    <i class="fas fa-arrow-left"></i>
-                </div>
                 <i class="fas fa-compass"></i>
                 <h1>建造师</h1>
             </div>
