@@ -16,13 +16,6 @@
             <div class="quest-header">
                 <i class="fas fa-compass"></i>
                 <h1>建造师</h1>
-                <div class="hint-content operation-content">
-                    <ul>
-                        <li><i class="fas fa-mouse-pointer"></i> 点击图形可以填充或清除</li>
-                        <li><i class="fas fa-hand-pointer"></i> 按住拖动可以连续填充</li>
-                        <li><i class="fas fa-eraser"></i> 使用橡皮擦可以清除整个图形</li>
-                    </ul>
-                </div>
             </div>
             <div class="quest-list">
                 <div class="quest-item active" data-level="1">
@@ -74,6 +67,16 @@
                                 <p>点击网格，构造不同的图形，数一数每个图形由几条边围成</p>
                             </div>
                         </div>
+                        <div class="operation-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <div class="hint-content operation-content">
+                                <ul>
+                                    <li><i class="fas fa-mouse-pointer"></i> 点击图形可以填充或清除</li>
+                                    <li><i class="fas fa-hand-pointer"></i> 按住拖动可以连续填充</li>
+                                    <li><i class="fas fa-eraser"></i> 使用橡皮擦可以清除整个图形</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="task-info" data-level="2" style="display: none;">
@@ -85,6 +88,16 @@
                             <div class="hint-content">
                                 <h4>任务二：面积探索</h4>
                                 <p>点击网格，构造不同的图形，比较不同图形的面积大小</p>
+                            </div>
+                        </div>
+                        <div class="operation-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <div class="hint-content operation-content">
+                                <ul>
+                                    <li><i class="fas fa-mouse-pointer"></i> 点击图形可以填充或清除</li>
+                                    <li><i class="fas fa-hand-pointer"></i> 按住拖动可以连续填充</li>
+                                    <li><i class="fas fa-eraser"></i> 使用橡皮擦可以清除整个图形</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -100,6 +113,16 @@
                                 <p>观察图形的周长与面积的关系：相同周长，面积是否相等？相同面积，周长是否相等？</p>
                             </div>
                         </div>
+                        <div class="operation-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <div class="hint-content operation-content">
+                                <ul>
+                                    <li><i class="fas fa-mouse-pointer"></i> 点击图形可以填充或清除</li>
+                                    <li><i class="fas fa-hand-pointer"></i> 按住拖动可以连续填充</li>
+                                    <li><i class="fas fa-eraser"></i> 使用橡皮擦可以清除整个图形</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="task-info" data-level="4" style="display: none;">
@@ -111,6 +134,16 @@
                             <div class="hint-content">
                                 <h4>任务四：角度魔法</h4>
                                 <p>在周长相同的情况下，观察角度变化对面积的影响</p>
+                            </div>
+                        </div>
+                        <div class="operation-hint">
+                            <i class="fas fa-lightbulb"></i>
+                            <div class="hint-content operation-content">
+                                <ul>
+                                    <li><i class="fas fa-mouse-pointer"></i> 点击图形可以填充或清除</li>
+                                    <li><i class="fas fa-hand-pointer"></i> 按住拖动可以连续填充</li>
+                                    <li><i class="fas fa-eraser"></i> 使用橡皮擦可以清除整个图形</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -152,27 +185,6 @@
         </div>
     </div>
     <script src="script.js"></script>
-    <script>
-        // 处理建造师标题的点击事件
-        const questHeader = document.querySelector('.quest-header');
-        questHeader.addEventListener('click', function(e) {
-            // 切换显示状态
-            this.classList.toggle('show-hint');
-            
-            // 点击其他地方时关闭提示
-            const closeHint = function(event) {
-                if (!questHeader.contains(event.target)) {
-                    questHeader.classList.remove('show-hint');
-                    document.removeEventListener('click', closeHint);
-                }
-            };
-            
-            // 延迟添加事件监听器，避免立即触发
-            setTimeout(() => {
-                document.addEventListener('click', closeHint);
-            }, 0);
-        });
-    </script>
 </body>
 </html>
 
