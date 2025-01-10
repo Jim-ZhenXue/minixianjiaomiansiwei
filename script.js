@@ -248,11 +248,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupGrid(cells, statsBox, color) {
         // 设置清除按钮
-        const clearButton = statsBox.parentElement.querySelector('.block-base');
-        clearButton.addEventListener('click', () => {
+        const eraser = statsBox.querySelector('.block-base');
+        eraser.addEventListener('click', () => {
             cells.forEach(cell => {
-                ['triangle-top', 'triangle-right', 'triangle-bottom', 'triangle-left'].forEach(className => {
-                    const triangle = cell.querySelector('.' + className);
+                const triangles = cell.querySelectorAll('.triangle-top, .triangle-right, .triangle-bottom, .triangle-left');
+                triangles.forEach(triangle => {
                     triangle.style.backgroundColor = '';
                     triangle.classList.remove('filled');
                 });
@@ -261,16 +261,14 @@ document.addEventListener('DOMContentLoaded', () => {
             updateQuestProgress(cells);
         });
 
+        // 设置三角形点击和拖动事件
         cells.forEach(cell => {
-            ['triangle-top', 'triangle-right', 'triangle-bottom', 'triangle-left'].forEach(className => {
-                const triangle = cell.querySelector('.' + className);
-                
+            const triangles = cell.querySelectorAll('.triangle-top, .triangle-right, .triangle-bottom, .triangle-left');
+            triangles.forEach(triangle => {
                 // 点击事件
-                triangle.addEventListener('click', () => {
-                    handleTriangleClick(triangle, cells, statsBox, color);
-                });
+                triangle.addEventListener('click', () => handleTriangleClick(triangle, cells, statsBox, color));
                 
-                // 鼠标拖动事件
+                // 拖动事件
                 triangle.addEventListener('mouseover', (e) => {
                     if (e.buttons === 1) { // 左键按下时
                         handleTriangleClick(triangle, cells, statsBox, color);
@@ -283,13 +281,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function initialize() {
         initializeGrids();
         setupQuestSystem();
-        setupOperationHint();
-
-        const leftStatsBox = document.querySelector('.grid-section-wrapper:first-child .stats-box');
-        const rightStatsBox = document.querySelector('.grid-section-wrapper:last-child .stats-box');
-
-        setupGrid(leftGridCells, leftStatsBox, LEFT_COLOR);
-        setupGrid(rightGridCells, rightStatsBox, RIGHT_COLOR);
+        setupGrid(leftGridCells, document.querySelector('#leftGrid').nextElementSibling, LEFT_COLOR);
+        setupGrid(rightGridCells, document.querySelector('#rightGrid').nextElementSibling, RIGHT_COLOR);
     }
 
     function setupOperationHint() {

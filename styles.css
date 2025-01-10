@@ -20,8 +20,8 @@ body {
     max-width: none;
     margin: -5px 20px 0;
     display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 20px;
+    grid-template-columns: 180px 1fr;
+    gap: 40px;
     background: rgba(0, 0, 0, 0.95);
     border-radius: 20px;
     padding: 0;
@@ -199,17 +199,17 @@ body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
-    gap: 40px;
+    justify-content: center;
+    gap: 80px;
     flex: 1;
-    padding-left: 0px;
+    padding: 0 40px;
 }
 
 .grid-section-wrapper {
-    flex: 1;
+    flex: 0 1 auto;
     display: flex;
     justify-content: center;
-    max-width: 480px;
+    width: 360px;
 }
 
 .grid-section {
@@ -420,7 +420,6 @@ body {
 .triangle-top.filled, .triangle-right.filled, .triangle-bottom.filled, .triangle-left.filled {
     background-color: inherit;
 }
-
 .task-header {
     display: flex;
     align-items: center;
@@ -433,9 +432,11 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 5px;
     cursor: pointer;
     margin-right: 40px;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
 }
 
 .task-hint i {
@@ -444,8 +445,7 @@ body {
 }
 
 .hint-text {
-    color: #ffffff;
-    font-size: 14px;
+    display: none;
 }
 
 .hint-content {
@@ -492,8 +492,9 @@ body {
 }
 
 .current-task {
-
+    font-size: 24px;
     font-weight: bold;
     color: #ffffff;
     margin-bottom: 10px;
 }
+
