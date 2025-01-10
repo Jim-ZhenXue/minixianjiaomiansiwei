@@ -171,6 +171,11 @@ body {
     position: relative;
 }
 
+.quest-tips {
+    position: static;
+    padding-left: 10px;
+}
+
 .level-info {
     margin-bottom: 10px;
     text-align: center;
@@ -420,7 +425,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 40px;
     margin-bottom: 5px;
 }
 
@@ -430,7 +435,7 @@ body {
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 40px;
 }
 
 .task-hint i {
