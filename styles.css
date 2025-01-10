@@ -46,35 +46,30 @@ body {
     cursor: pointer;
 }
 
-.quest-header:hover .operation-content,
-.quest-header:active .operation-content {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-}
-
 .quest-header .operation-content {
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 100%;
     width: 200px;
     background: white;
     border-radius: 8px;
     padding: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    display: none;
     z-index: 1000;
+    margin-left: -50px;
     margin-top: 10px;
+}
+
+.quest-header.show-hint .operation-content {
+    display: block;
 }
 
 .quest-header .operation-content::before {
     content: '';
     position: absolute;
     top: -6px;
-    left: 20px;
+    left: 50px;
     width: 12px;
     height: 12px;
     background: white;

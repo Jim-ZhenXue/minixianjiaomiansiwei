@@ -152,6 +152,27 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        // 处理建造师标题的点击事件
+        const questHeader = document.querySelector('.quest-header');
+        questHeader.addEventListener('click', function(e) {
+            // 切换显示状态
+            this.classList.toggle('show-hint');
+            
+            // 点击其他地方时关闭提示
+            const closeHint = function(event) {
+                if (!questHeader.contains(event.target)) {
+                    questHeader.classList.remove('show-hint');
+                    document.removeEventListener('click', closeHint);
+                }
+            };
+            
+            // 延迟添加事件监听器，避免立即触发
+            setTimeout(() => {
+                document.addEventListener('click', closeHint);
+            }, 0);
+        });
+    </script>
 </body>
 </html>
 
