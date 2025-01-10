@@ -171,11 +171,6 @@ body {
     position: relative;
 }
 
-.quest-tips {
-    position: static;
-    padding-left: 10px;
-}
-
 .level-info {
     margin-bottom: 10px;
     text-align: center;
@@ -285,7 +280,7 @@ body {
     display: inline-block;
     cursor: pointer;
     background: #000000;
-    padding: 8px 15px;
+    padding: 8px 12px;
     border-radius: 12px;
     color: #ffffff;
 }
@@ -305,16 +300,14 @@ body {
     z-index: 1000;
     left: 100%;
     top: 0;
-    transform: translateY(-100%);
     margin-left: 10px;
-    margin-top: -10px;
 }
 
 .operation-content::after {
     content: '';
     position: absolute;
     left: -16px;
-    bottom: 10px;
+    top: 15px;
     border-width: 8px;
     border-style: solid;
     border-color: transparent #333 transparent transparent;
@@ -437,6 +430,7 @@ body {
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .task-hint i {
