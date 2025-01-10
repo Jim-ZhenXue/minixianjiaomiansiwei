@@ -13,11 +13,10 @@
     <div class="game-container">
         <!-- 上方控制栏 -->
         <div class="quest-panel">
-            <button class="back-button">
-                <i class="fas fa-arrow-left"></i>
-                返回
-            </button>
             <div class="quest-header">
+                <div class="back-button" onclick="wx.navigateTo({url: '/pages/index/index'})">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
                 <i class="fas fa-compass"></i>
                 <h1>建造师</h1>
             </div>
