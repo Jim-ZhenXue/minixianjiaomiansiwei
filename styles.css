@@ -34,6 +34,7 @@ body {
     border-radius: 20px 0 0 20px;
     padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
 .quest-header {
@@ -169,15 +170,15 @@ body {
 
 .quest-tips {
     position: absolute;
-    top: 20px;
-    right: 30px;
+    bottom: 20px;
+    left: 20px;
     z-index: 100;
 }
 
 .level-info {
     margin-bottom: 10px;
     text-align: center;
-    padding-right: 60px;
+    padding-right: 0;
 }
 
 .current-task {
@@ -300,18 +301,19 @@ body {
     padding: 10px 15px;
     border-radius: 5px;
     z-index: 1000;
-    top: 0;
-    right: -300px;
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 10px;
 }
 
 .operation-content::after {
     content: '';
     position: absolute;
-    top: 15px;
-    left: -16px;
+    bottom: -16px;
+    left: 20px;
     border-width: 8px;
     border-style: solid;
-    border-color: transparent #333 transparent transparent;
+    border-color: #333 transparent transparent transparent;
 }
 
 .operation-hint:hover .operation-content {
