@@ -497,29 +497,29 @@ body {
 }
 
 .back-button {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    top: calc(env(safe-area-inset-top) + 20px);
     left: 20px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    padding: 10px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
     border-radius: 50%;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
+    cursor: pointer;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .back-button:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
+    opacity: 0.8;
+    transform: none;
+    box-shadow: none;
 }
 
 .back-button i {
-    font-size: 16px;
+    color: white;
+    font-size: 24px;
 }
 
