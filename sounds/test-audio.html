@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .status {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        .log {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>音频测试页面</h1>
+    
+    <div class="test-section">
+        <h2>方法1: 基本音频播放</h2>
+        <button id="playHtmlAudio">播放HTML音频</button>
+        <button id="playClickSound">点击音效</button>
+        <button id="playEraseSound">擦除音效</button>
+        <button id="playSwitchSound">切换音效</button>
+        <div class="status" id="htmlAudioStatus">状态: 等待点击</div>
+        
+        <audio id="testAudio" preload="auto">
+            <source src="click.mp3" type="audio/mpeg">
+            您的浏览器不支持音频标签
+        </audio>
+    </div>
+    
+    <div class="test-section">
+        <h2>方法2: Web Audio API</h2>
+        <button id="playWebAudio">使用Web Audio API播放</button>
+        <div class="status" id="webAudioStatus">状态: 等待点击</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>方法3: 动态创建Audio对象</h2>
+        <button id="playDynamicAudio">动态创建Audio对象</button>
+        <div class="status" id="dynamicAudioStatus">状态: 等待点击</div>
+    </div>
+    
+    <div class="log" id="logOutput">
+        <h3>日志输出</h3>
+        <div id="logContent"></div>
+    </div>
+    
+    <script>
+        // 日志功能
+        function log(message) {
+            const logContent = document.getElementById('logContent');
+            const logItem = document.createElement('div');
+            const timestamp = new Date().toLocaleTimeString();
+            logItem.textContent = `[${timestamp}] ${message}`;
+            logContent.appendChild(logItem);
+            // 自动滚动到底部
+            const logOutput = document.getElementById('logOutput');
+            logOutput.scrollTop = logOutput.scrollHeight;
+            
+            // 同时在控制台显示
+            console.log(message);
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            log('页面加载完成，音频测试准备就绪');
+            
+            // 方法1: HTML Audio元素
+            const testAudio = document.getElementById('testAudio');
+            const htmlAudioStatus = document.getElementById('htmlAudioStatus');
+            
+            document.getElementById('playHtmlAudio').addEventListener('click', function() {
+                log('尝试播放HTML Audio元素...');
+                htmlAudioStatus.textContent = '状态: 尝试播放中...';
+                
+                try {
+                    testAudio.currentTime = 0; // 重置到开始位置
+                    testAudio.volume = 1.0;    // 设置最大音量
+                    
+                    const playPromise = testAudio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            log('HTML Audio元素播放成功');
+                            htmlAudioStatus.textContent = '状态: 播放成功';
+                        }).catch(error => {
+                            log('HTML Audio元素播放失败: ' + error.message);
+                            htmlAudioStatus.textContent = '状态: 播放失败 - ' + error.message;
+                        });
+                    }
+                } catch (error) {
+                    log('HTML Audio元素播放出错: ' + error.message);
+                    htmlAudioStatus.textContent = '状态: 出错 - ' + error.message;
+                }
+            });
+            
+            // 不同音效的测试
+            const soundFiles = {
+                'click': 'click.mp3',
+                'erase': 'erase.mp3',
+                'switch': 'switch.mp3'
+            };
+            
+            function playSound(soundName) {
+                log(`尝试播放${soundName}音效...`);
+                htmlAudioStatus.textContent = `状态: 尝试播放${soundName}...`;
+                
+                try {
+                    const audio = new Audio(soundFiles[soundName]);
+                    audio.volume = 1.0;
+                    
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            log(`${soundName}音效播放成功`);
+                            htmlAudioStatus.textContent = `状态: ${soundName}播放成功`;
+                        }).catch(error => {
+                            log(`${soundName}音效播放失败: ` + error.message);
+                            htmlAudioStatus.textContent = `状态: ${soundName}播放失败 - ` + error.message;
+                        });
+                    }
+                } catch (error) {
+                    log(`${soundName}音效播放出错: ` + error.message);
+                    htmlAudioStatus.textContent = `状态: ${soundName}出错 - ` + error.message;
+                }
+            }
+            
+            document.getElementById('playClickSound').addEventListener('click', function() {
+                playSound('click');
+            });
+            
+            document.getElementById('playEraseSound').addEventListener('click', function() {
+                playSound('erase');
+            });
+            
+            document.getElementById('playSwitchSound').addEventListener('click', function() {
+                playSound('switch');
+            });
+            
+            // 方法2: Web Audio API
+            let audioContext;
+            const webAudioStatus = document.getElementById('webAudioStatus');
+            
+            document.getElementById('playWebAudio').addEventListener('click', function() {
+                log('尝试使用Web Audio API播放...');
+                webAudioStatus.textContent = '状态: 尝试播放中...';
+                
+                try {
+                    // 如果尚未创建，则创建AudioContext
+                    if (!audioContext) {
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        log('成功创建AudioContext: ' + audioContext.state);
+                    }
+                    
+                    // 如果需要，恢复AudioContext
+                    if (audioContext.state === 'suspended') {
+                        log('AudioContext被暂停，尝试恢复...');
+                        audioContext.resume().then(() => {
+                            log('AudioContext恢复成功');
+                            loadAndPlaySound();
+                        });
+                    } else {
+                        loadAndPlaySound();
+                    }
+                    
+                    function loadAndPlaySound() {
+                        fetch('click.mp3')
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('网络请求失败: ' + response.status);
+                                }
+                                return response.arrayBuffer();
+                            })
+                            .then(arrayBuffer => {
+                                log('成功获取音频数据，开始解码...');
+                                return audioContext.decodeAudioData(arrayBuffer);
+                            })
+                            .then(audioBuffer => {
+                                log('音频解码成功，开始播放...');
+                                const source = audioContext.createBufferSource();
+                                source.buffer = audioBuffer;
+                                source.connect(audioContext.destination);
+                                source.start(0);
+                                webAudioStatus.textContent = '状态: 播放成功';
+                                log('Web Audio API播放成功');
+                            })
+                            .catch(error => {
+                                log('Web Audio API播放失败: ' + error.message);
+                                webAudioStatus.textContent = '状态: 播放失败 - ' + error.message;
+                            });
+                    }
+                } catch (error) {
+                    log('Web Audio API播放出错: ' + error.message);
+                    webAudioStatus.textContent = '状态: 出错 - ' + error.message;
+                }
+            });
+            
+            // 方法3: 动态创建Audio对象
+            const dynamicAudioStatus = document.getElementById('dynamicAudioStatus');
+            
+            document.getElementById('playDynamicAudio').addEventListener('click', function() {
+                log('尝试动态创建Audio对象播放...');
+                dynamicAudioStatus.textContent = '状态: 尝试播放中...';
+                
+                try {
+                    const audio = new Audio();
+                    audio.src = 'click.mp3';
+                    audio.volume = 1.0;
+                    
+                    // 监听加载事件
+                    audio.addEventListener('canplaythrough', function loadHandler() {
+                        log('音频加载完成，开始播放');
+                        
+                        const playPromise = audio.play();
+                        if (playPromise !== undefined) {
+                            playPromise.then(() => {
+                                log('动态Audio对象播放成功');
+                                dynamicAudioStatus.textContent = '状态: 播放成功';
+                            }).catch(error => {
+                                log('动态Audio对象播放失败: ' + error.message);
+                                dynamicAudioStatus.textContent = '状态: 播放失败 - ' + error.message;
+                            });
+                        }
+                        
+                        // 移除事件监听器，避免多次触发
+                        audio.removeEventListener('canplaythrough', loadHandler);
+                    });
+                    
+                    // 监听错误事件
+                    audio.addEventListener('error', function(e) {
+                        log('音频加载失败: ' + e.target.error.message);
+                        dynamicAudioStatus.textContent = '状态: 加载失败 - ' + e.target.error.message;
+                    });
+                    
+                    // 添加到DOM中
+                    document.body.appendChild(audio);
+                } catch (error) {
+                    log('动态Audio对象创建出错: ' + error.message);
+                    dynamicAudioStatus.textContent = '状态: 出错 - ' + error.message;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
