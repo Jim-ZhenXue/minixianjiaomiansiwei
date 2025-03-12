@@ -58,27 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // 添加测试按钮
-    const testButton = document.createElement('button');
-    testButton.textContent = '测试内联音频';
-    testButton.style.position = 'fixed';
-    testButton.style.bottom = '70px';
-    testButton.style.left = '20px';
-    testButton.style.zIndex = '9999';
-    testButton.style.padding = '10px 20px';
-    testButton.style.backgroundColor = '#9C27B0';
-    testButton.style.color = 'white';
-    testButton.style.border = 'none';
-    testButton.style.borderRadius = '5px';
-    testButton.style.cursor = 'pointer';
-    
-    testButton.addEventListener('click', () => {
-        console.log('测试内联音频');
-        window.playSound('click');
-    });
-    
-    document.body.appendChild(testButton);
-    
     // 拦截现有的声音管理器
     if (window.soundManager) {
         const originalPlay = soundManager.play;
