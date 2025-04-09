@@ -7,12 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. 集成三角形点击音效
     function addTriangleClickSounds() {
-        const triangles = document.querySelectorAll('.triangle-top, .triangle-right, .triangle-bottom, .triangle-left');
-        triangles.forEach(triangle => {
-            const originalClick = triangle.onclick;
-            triangle.addEventListener('click', (e) => {
-                soundManager.play('click');
-                // 原始的点击处理程序仍然会被执行
+        const grids = document.querySelectorAll('#leftGrid, #rightGrid');
+        grids.forEach(grid => {
+            grid.addEventListener('click', (e) => {
+                const triangle = e.target.closest('.triangle-top, .triangle-right, .triangle-bottom, .triangle-left');
+                if (triangle && !triangle.classList.contains('played-sound')) {
+                    soundManager.play('click');
+                    // 添加标记防止重复播放
+                    triangle.classList.add('played-sound');
+                    // 100ms后移除标记，允许下次点击时播放
+                    setTimeout(() => {
+                        triangle.classList.remove('played-sound');
+                    }, 100);
+                }
             });
         });
     }
