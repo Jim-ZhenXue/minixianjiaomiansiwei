@@ -215,7 +215,7 @@ body {
     flex: 0 1 auto;
     display: flex;
     justify-content: center;
-    width: 300px;
+    width: 420px;
 }
 
 .grid-section {
@@ -227,8 +227,8 @@ body {
 .grid {
     border: 2px solid #333;
     display: grid;
-    grid-template-columns: repeat(8, 36px);
-    grid-template-rows: repeat(8, 36px);
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
     gap: 1px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
