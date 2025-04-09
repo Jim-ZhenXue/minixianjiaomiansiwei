@@ -5,12 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let leftGridCells = [];
     let rightGridCells = [];
     let currentLevel = 1;
-    const clickSound = document.getElementById('clickSound');
-
-    // 防止iOS默认音效
-    document.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-    }, { passive: false });
 
     // 任务切换功能
     function setupQuestSystem() {
@@ -19,12 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         questItems.forEach(item => {
             item.addEventListener('click', () => {
-                // 播放音效
-                if (clickSound) {
-                    clickSound.currentTime = 0;
-                    clickSound.play().catch(e => console.log('Audio play failed:', e));
-                }
-                
                 // 更新任务状态
                 questItems.forEach(q => q.classList.remove('active'));
                 item.classList.add('active');
@@ -247,11 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleTriangleClick(triangle, cells, statsBox, color) {
-        if (clickSound) {
-            clickSound.currentTime = 0;
-            clickSound.play().catch(e => console.log('Audio play failed:', e));
-        }
-        
         if (triangle.classList.contains('filled')) {
             triangle.style.backgroundColor = '';
             triangle.classList.remove('filled');
