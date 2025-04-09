@@ -17,7 +17,6 @@ body {
     justify-content: center;
     padding: env(safe-area-inset-top) 20px 20px 20px;
     box-sizing: border-box;
-    min-height: 100vh;
 }
 
 .game-container {
@@ -31,11 +30,8 @@ body {
     padding: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     width: min(1200px, calc(100% - 40px));
-    height: min(800px, calc(100vh - 40px));
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    min-height: min(1000px, calc(100vh - 40px));
+    height: auto;
 }
 
 .quest-panel {
@@ -43,6 +39,7 @@ body {
     border-radius: 20px 20px 0 0;
     padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin-top: calc(env(safe-area-inset-top) + 50px);
     position: relative;
 }
 
