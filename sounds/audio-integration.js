@@ -7,30 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. 集成三角形点击音效
     function addTriangleClickSounds() {
-        const grids = document.querySelectorAll('#leftGrid, #rightGrid');
-        let lastTriangle = null;
-
-        function handleInteraction(e) {
-            const target = e.target;
-            // 检查是否点击了三角形
-            if (target.matches('.triangle-top, .triangle-right, .triangle-bottom, .triangle-left')) {
-                // 确保不是同一个三角形的重复触发
-                if (target !== lastTriangle) {
-                    soundManager.play('click');
-                    lastTriangle = target;
-                    // 200ms后重置，允许再次点击同一个三角形
-                    setTimeout(() => {
-                        if (lastTriangle === target) {
-                            lastTriangle = null;
-                        }
-                    }, 200);
-                }
-            }
-        }
-
-        grids.forEach(grid => {
-            grid.addEventListener('mousedown', handleInteraction);
-            grid.addEventListener('touchstart', handleInteraction);
+        const triangles = document.querySelectorAll('.triangle-top, .triangle-right, .triangle-bottom, .triangle-left');
+        triangles.forEach(triangle => {
+            const originalClick = triangle.onclick;
+            triangle.addEventListener('click', (e) => {
+                soundManager.play('click');
+                // 原始的点击处理程序仍然会被执行
+            });
         });
     }
     
