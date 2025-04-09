@@ -34,6 +34,50 @@ body {
     max-width: 900px;
 }
 
+/* iPad Media Queries */
+@media only screen 
+and (min-device-width: 768px) 
+and (max-device-width: 1024px) {
+    html, body {
+        height: 100%;
+        position: fixed;
+        width: 100%;
+    }
+
+    body {
+        padding: env(safe-area-inset-top) 10px 10px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .game-container {
+        width: calc(100% - 20px);
+        height: calc(100vh - 40px);
+        max-height: 900px;
+        margin: auto;
+        grid-template-columns: 140px 1fr;
+    }
+
+    .quest-panel {
+        margin-top: 0;
+        padding: 15px 8px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(8, 32px);
+        grid-template-rows: repeat(8, 32px);
+    }
+
+    .grid-container {
+        gap: 20px;
+    }
+
+    .grid-section-wrapper {
+        width: 280px;
+    }
+}
+
 .quest-panel {
     background: #000000;
     border-radius: 20px 0 0 20px;
